@@ -29,7 +29,7 @@ const sum3 = (input: number[], sum: number) => {
   }
 };
 
-let input = (await fs.readFile("./input1.txt", { encoding: "utf-8" }))
+let input = (await fs.readFile("./day1-input1.txt", { encoding: "utf-8" }))
   .split(/\s/)
   .map((s) => s.trim())
   .filter(Boolean)

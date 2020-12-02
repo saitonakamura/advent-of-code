@@ -10,6 +10,7 @@
     "typescript": "^4.1.2"
   },
   "scripts": {
-    "day1": "node --loader ts-node/esm.mjs day1.ts"
+    "day1": "node --loader ts-node/esm.mjs day1.ts",
+    "day2": "node --loader ts-node/esm.mjs day2.ts"
   }
 }
