@@ -29,19 +29,21 @@ const sum3 = (input: number[], sum: number) => {
   }
 };
 
-let input = (await fs.readFile("./day1-input1.txt", { encoding: "utf-8" }))
-  .split(/\s/)
-  .map((s) => s.trim())
-  .filter(Boolean)
-  .map((s) => parseFloat(s));
-
-if (process.argv[2]) {
-  input = process.argv[2]
-    .split(",")
+(async () => {
+  let input = (await fs.readFile("./day1-input1.txt", { encoding: "utf-8" }))
+    .split(/\s/)
     .map((s) => s.trim())
     .filter(Boolean)
     .map((s) => parseFloat(s));
-}
 
-console.log(sum2(input, 2020));
-console.log(sum3(input, 2020));
+  if (process.argv[2]) {
+    input = process.argv[2]
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean)
+      .map((s) => parseFloat(s));
+  }
+
+  console.log(sum2(input, 2020));
+  console.log(sum3(input, 2020));
+})();
