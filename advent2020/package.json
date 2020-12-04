@@ -11,6 +11,7 @@
   "scripts": {
     "day1": "ts-node day1.ts",
     "day2": "ts-node day2.ts",
-    "day3": "ts-node day3.ts"
+    "day3": "ts-node day3.ts",
+    "day4": "ts-node day4.ts"
   }
 }
