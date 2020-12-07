@@ -1,4 +1,3 @@
-import { pid } from "process";
 import { read } from "./helper";
 
 const required = ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"] as const;
