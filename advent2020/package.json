@@ -19,6 +19,7 @@
     "day7": "ts-node day7.ts",
     "day8": "ts-node day8.ts",
     "day9": "ts-node day9.ts",
-    "day10": "ts-node day10.ts"
+    "day10": "ts-node day10.ts",
+    "day11": "ts-node day11.ts"
   }
 }
