@@ -1,4 +1,5 @@
 import { reduce } from "fp-ts/lib/Array";
+import { reduceWithIndex } from "fp-ts/lib/ReadonlyRecord";
 import fs from "fs/promises";
 
 const defaultParse = (s: string) =>
