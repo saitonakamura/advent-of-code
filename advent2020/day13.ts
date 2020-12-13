@@ -34,6 +34,24 @@ const f1 = (data: T) => {
   return res.wait * res.bus;
 };
 
+const primeFac = (n: number, map: Map<number, number>) => {
+  while (n % 2 === 0) {
+    map.set(2, (map.get(2) ?? 0) + 1);
+    n /= 2;
+  }
+
+  for (let d = 3; d < Math.sqrt(n); d += 2) {
+    while (n % d === 0) {
+      map.set(d, (map.get(d) ?? 0) + 1);
+      n /= d;
+    }
+  }
+
+  if (n > 2) {
+    map.set(n, (map.get(n) ?? 0) + 1);
+  }
+};
+
 const f2 = (data: T) => {
   let p = 0n;
   let valid = false;
@@ -49,9 +67,42 @@ const f2 = (data: T) => {
     }
   }
 
+  console.log({ max });
+
+  let step = max;
+
+  const pairs = buses
+    .map((b, i) => [i - maxIndex, b])
+    .filter(([, b]) => b !== -1)
+    .filter(([i, b]) => Math.abs(i) === b);
+
+  const map = new Map<number, number>();
+  for (let i = 0; i < pairs.length; i++) {
+    primeFac(pairs[i][1], map);
+  }
+
+  primeFac(max, map);
+
+  const lcm = Array.from(map.entries()).reduce(
+    (acc, [prime, count]) => acc * prime ** count,
+    1
+  );
+
+  console.log(map);
+  console.log({ lcm });
+  step = lcm;
+
   // p += BigInt(maxIndex);
+  let c = 0;
 
   while (!valid) {
+    c++;
+
+    if (c % 1000 === 0) {
+      process.stdout.cursorTo(0);
+      process.stdout.write(p.toString().padStart(20, " "));
+    }
+
     valid = true;
 
     for (let i = maxIndex + 1; i < buses.length; i++) {
@@ -81,9 +132,11 @@ const f2 = (data: T) => {
     }
 
     if (!valid) {
-      p += BigInt(max);
+      p += BigInt(step);
     }
   }
+
+  console.log("");
 
   return p - BigInt(maxIndex);
 };
