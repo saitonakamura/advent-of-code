@@ -1,10 +1,9 @@
 import { reduce } from "fp-ts/lib/Array";
-import { reduceWithIndex } from "fp-ts/lib/ReadonlyRecord";
 import fs from "fs/promises";
 
 const defaultParse = (s: string) =>
   s
-    .replace("\r\n", "\n")
+    .replace(/\r\n/g, "\n")
     .split("\n")
     .map((s) => s.trim())
     .filter(Boolean);
