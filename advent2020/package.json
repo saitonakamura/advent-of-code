@@ -23,6 +23,7 @@
     "day11": "ts-node day11.ts",
     "day12": "ts-node day12.ts",
     "day13": "ts-node day13.ts",
-    "day14": "dotnet run . 14"
+    "day14": "dotnet run . 14",
+    "day15": "ts-node day15.ts"
   }
 }

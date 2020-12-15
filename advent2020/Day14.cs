@@ -34,7 +34,7 @@ namespace advent2020
             });
         }
 
-        public static string Solve(string input = "1")
+        public static string Solve1(string input = "1")
         {
             var data = Parse(input);
             ulong zeroMask = 0L;
@@ -53,6 +53,40 @@ namespace advent2020
                         }
                     case "mem":
                         {
+                            mem[op.addr] = (op.val & zeroMask) | oneMask;
+                            break;
+                        }
+                }
+            }
+
+            return mem.Aggregate((ulong)0L, (acc, curr) => acc + curr.Value).ToString();
+        }
+
+        public static string Solve2(string input = "1")
+        {
+            var data = Parse(input);
+            ulong zeroMask = 0L;
+            var oneMask = Convert.ToUInt64("".PadLeft(64, '1'), 2);
+            string xMask = "";
+            var mem = new Dictionary<ulong, ulong>();
+
+            foreach (var op in data)
+            {
+                switch (op.code)
+                {
+                    case "mask":
+                        {
+                            zeroMask = Convert.ToUInt64(op.mask.Replace("X", "1"), 2);
+                            oneMask = Convert.ToUInt64(op.mask.Replace("X", "0"), 2);
+                            xMask = op.mask.Replace("1", "0");
+
+                            break;
+                        }
+                    case "mem":
+                        {
+                            var l = xMask.Count(c => c == 'X');
+                            var a = new byte[l];
+                            // for (var i = 0;)
                             mem[op.addr] = (op.val & zeroMask) | oneMask;
                             break;
                         }
