@@ -4,6 +4,8 @@
     <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Utils.fs" />
+    <Compile Include="Day1.fs" />
     <Compile Include="Read.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
