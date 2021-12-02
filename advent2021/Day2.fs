@@ -28,3 +28,18 @@ let solve (lines: seq<string>) =
             | Failure (error, _, _) -> raise (ParsingError(error)))
         (0, 0)
     |> fun (x, y) -> string (x * y)
+
+let solvep2 (lines: seq<string>) =
+    lines
+    |> Seq.map (run (tuple2 (pcommand .>> spaces) (pint32 .>> spaces)))
+    |> Seq.fold
+        (fun (x, depth, aim) res ->
+            match res with
+            | Success ((command, value), _, _) ->
+                match command with
+                | Forward -> (x + value, depth + aim * value, aim)
+                | Up -> (x, depth, aim - value)
+                | Down -> (x, depth, aim + value)
+            | Failure (error, _, _) -> raise (ParsingError(error)))
+        (0, 0, 0)
+    |> fun (x, depth, _aim) -> string (x * depth)
