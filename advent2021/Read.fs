@@ -10,6 +10,8 @@ let readline (argv: string array) =
             match day with
             | "1" -> Day1.solve
             | "1p2" -> Day1.solvep2
+            | "2" -> Day2.solve
+            // | "2p2" -> Day2.solvep2
             | _ -> fun _ -> "Please provide correct day"
 
         let res = solve lines
