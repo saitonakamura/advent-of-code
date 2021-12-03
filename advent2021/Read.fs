@@ -16,5 +16,5 @@ let readline (argv: string array) =
             | _ -> fun _ -> "Please provide correct day"
 
         let res = solve lines
-        printf "%s" res
+        printfn "%s" res
     | _ -> printf "Provide input file name without extension"
