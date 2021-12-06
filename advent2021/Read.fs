@@ -13,6 +13,7 @@ let readline (argv: string array) =
             | ("2", "1") -> Day2.solve
             | ("2", "2") -> Day2.solvep2
             | ("3", "1") -> Day3.solve
+            | ("3", "2") -> Day3.solvep2
             | _ -> fun _ -> "Please provide correct day"
 
         let res = solve lines

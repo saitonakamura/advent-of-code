@@ -49,3 +49,30 @@ let solve (lines: seq<string>) =
 
         printfn "%i %i %s" number nnumber bitsStr
         number * nnumber |> string
+
+type Metric =
+    | Oxygen
+    | CO2
+
+let rec p2rec (lines: seq<char[]>) (index: int) metric =
+    let avg = lines |> Seq.map (Array.item index >> string >> float) |> Seq.average
+    let charThisTime =
+        match metric with
+        | Oxygen -> if avg >= 0.5 then '1' else '0'
+        | CO2 -> if avg < 0.5 then '1' else '0'
+    let newLines = lines |> Seq.filter (fun c -> Array.item index c = charThisTime)
+    if Seq.length newLines < 2 then
+        Seq.head newLines
+    else
+        p2rec newLines ( index + 1 ) metric
+
+let solvep2 lines =
+    let mapResult = lines |> Seq.map Seq.toArray
+    let oxygenAr = p2rec mapResult 0 Oxygen
+    let co2Ar = p2rec mapResult 0 CO2
+    let oxygen = System.Convert.ToInt32(Utils.stringImplode oxygenAr, 2)
+    let co2 = System.Convert.ToInt32(Utils.stringImplode co2Ar, 2)
+    co2 * oxygen |> string
+    
+    
+    

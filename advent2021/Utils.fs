@@ -17,3 +17,8 @@ let seqTriplewise (source: seq<'T>) =
                     iref <- iref2
                     iref2 <- j
     }
+
+let stringImplode (xs: char array) =
+    let sb = System.Text.StringBuilder(xs.Length)
+    xs |> Array.iter (sb.Append >> ignore)
+    sb.ToString()
