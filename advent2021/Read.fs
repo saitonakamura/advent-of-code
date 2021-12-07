@@ -4,8 +4,9 @@ let readline (argv: string array) =
     match argv with
     | [| day; part; name |] ->
         let inputPath = $"./inputs/{day}{name}.txt"
-        let readLines = fun _ ->
-            System.IO.File.ReadLines(inputPath)
+
+        let readLines =
+            fun _ -> System.IO.File.ReadLines(inputPath)
 
         let res =
             match (day, part) with
@@ -16,6 +17,7 @@ let readline (argv: string array) =
             | ("3", "1") -> Day3.solve (readLines ())
             | ("3", "2") -> Day3.solvep2 (readLines ())
             | ("4", "1") -> Day4.p1 inputPath
+            | ("4", "2") -> Day4.p2 inputPath
             | _ -> "Please provide correct day"
 
         printfn "%s" res
