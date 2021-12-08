@@ -19,6 +19,7 @@ let readline (argv: string array) =
             | ("4", "1") -> Day4.p1 inputPath
             | ("4", "2") -> Day4.p2 inputPath
             | ("5", "1") -> Day5.p1 inputPath
+            | ("5", "2") -> Day5.p2 inputPath
             | _ -> "Please provide correct day"
 
         printfn "%s" res
