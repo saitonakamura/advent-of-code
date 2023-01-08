@@ -54,7 +54,7 @@ let execute_instruction boxes instruction =
   let to_ = boxes.(instruction.moveto) in
   let (tomove, tail) = List.split_n from instruction.howmany in
   Array.set boxes instruction.takefrom tail;
-  Array.set boxes instruction.moveto (List.rev tomove @ to_);
+  Array.set boxes instruction.moveto (tomove @ to_);
   log_boxes boxes;
   boxes
 
