@@ -1,3 +1,29 @@
 (executable
- (name day6)
+ (name day1)
+ (modules day1)
  (libraries base stdio str))
+
+(executable
+ (name day2)
+ (modules day2)
+ (libraries base stdio str))
+
+(executable
+ (name day3)
+ (modules day3)
+ (libraries base stdio str))
+
+(executable
+ (name day4)
+ (modules day4)
+ (libraries base stdio str))
+
+(executable
+ (name day5)
+ (modules day5)
+ (libraries base stdio str))
+ 
+(executable
+ (name day6)
+ (modules day6)
+ (libraries base stdio))

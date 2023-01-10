@@ -1,0 +1,14 @@
+(menhir
+ (modules day7parser))
+
+(ocamllex day7lexer)
+
+(library
+ (name day7_parser)
+ (modules day7lexer day7parser day7ast)
+ (libraries core))
+
+(executable
+ (name day7)
+ (modules day7)
+ (libraries base stdio core day7_parser))
