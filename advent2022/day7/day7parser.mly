@@ -18,24 +18,18 @@ prog:
   ;
 
 value:
+  | DOLLAR; LS
+    { `LsCommand }
   | DOLLAR; CD; ROOT
     { `CdRootCommand }
   | DOLLAR; CD; path = STRING
     { `CdToCommand path }
   | DOLLAR; CD; UP_DIR
     { `CdUpCommand }
-  | DOLLAR; LS; results = ls_results; NEWLINE
-    { `LsCommand results }
-  ;
-
-ls_results:
-  results = separated_list(NEWLINE, output)
-    { results }
-  ;
-
-output:
   | DIR_WORD; name = STRING
     { `OutputDir name }
+  | size = INT; name = STRING
+    { `OutputFile (name, size) }
   | size = INT; name = STRING
     { `OutputFile (name, size) }
   ;
