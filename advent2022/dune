@@ -22,7 +22,7 @@
  (name day5)
  (modules day5)
  (libraries base stdio str))
- 
+
 (executable
  (name day6)
  (modules day6)
