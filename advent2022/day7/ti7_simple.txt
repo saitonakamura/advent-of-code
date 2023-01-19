@@ -1,0 +1,7 @@
+$ cd /
+$ ls
+dir a
+$ cd a
+$ ls
+29116 f
+$ cd ..
